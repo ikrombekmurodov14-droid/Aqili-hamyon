@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aqilli hamyon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef4f1;--card:#fff;--ink:#12302b;--mute:#5d7570;--line:#d9e5e1;
+  --brand:#0f766e;--inc:#0f766e;--exp:#c2410c;--sav:#b7791f;--on:#fff;
+  color-scheme:light;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0c1917;--card:#13262a;--ink:#e4f1ee;--mute:#8fb0a9;--line:#23403f;--brand:#2dd4bf;--inc:#2dd4bf;--exp:#fb923c;--sav:#fbbf24;--on:#06201c;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#0c1917;--card:#13262a;--ink:#e4f1ee;--mute:#8fb0a9;--line:#23403f;--brand:#2dd4bf;--inc:#2dd4bf;--exp:#fb923c;--sav:#fbbf24;--on:#06201c;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1rem;font-weight:800;margin:0 0 4px;color:var(--mute)}
+.hero{padding:8px 0 20px}
+.bal{font-size:clamp(2.4rem,9vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0}
+.bal small{font-size:.4em;font-weight:600;color:var(--mute);margin-left:6px;letter-spacing:0}
+.pair{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.chip{flex:1 1 140px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.chip span{display:block;font-size:.8rem;color:var(--mute)}
+.chip b{font-size:1.15rem}
+.chip.i b{color:var(--inc)}.chip.e b{color:var(--exp)}
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:760px){.grid{grid-template-columns:1.15fr 1fr;align-items:start}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+h2{font-size:1.05rem;margin:0 0 12px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--bg);padding:4px;border-radius:12px;margin-bottom:12px}
+.seg button{border:0;background:none;color:var(--mute);font:inherit;font-weight:600;padding:8px 4px;border-radius:9px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+label{display:block;font-size:.85rem;color:var(--mute);margin:10px 0 4px}
+input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+input:focus,select:focus,button:focus-visible,summary:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{width:100%;margin-top:14px;border:0;background:var(--brand);color:var(--on);font:inherit;font-weight:800;padding:12px;border-radius:12px;cursor:pointer}
+.err{color:var(--exp);font-size:.85rem;min-height:1.2em;margin:8px 0 0}
+.ring{display:flex;align-items:center;gap:16px}
+.ring svg{width:120px;height:120px;flex:none;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:12}
+.ring .bg{stroke:var(--line)}
+.ring .fg{stroke:var(--sav);stroke-linecap:round;transition:stroke-dashoffset .5s}
+.pct{font-size:2rem;font-weight:800;line-height:1}
+.mute{color:var(--mute);font-size:.88rem}
+details{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;font-weight:600;font-size:.9rem}
+ul{list-style:none;margin:0;padding:0}
+li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+li:first-child{border-top:0}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}
+.t{flex:1;min-width:0}
+.t b{display:block;font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.amt{font-weight:800;white-space:nowrap}
+.x{border:0;background:none;color:var(--mute);font-size:1.2rem;cursor:pointer;padding:4px 8px;border-radius:8px}
+.x:hover{color:var(--exp)}
+.empty{color:var(--mute);text-align:center;padding:18px 0;margin:0}
+.list{margin-top:16px}
+body{background:radial-gradient(52rem 28rem at 0% -8%,rgba(124,58,237,.20),transparent 60%),radial-gradient(46rem 28rem at 100% 6%,rgba(14,165,233,.20),transparent 60%),radial-gradient(40rem 24rem at 50% 110%,rgba(244,114,182,.14),transparent 60%),var(--bg)}
+.hero{padding:22px 20px 20px;margin-bottom:18px;border-radius:26px;color:#fff;background:linear-gradient(135deg,#6d28d9 0%,#2563eb 52%,#0ea5e9 100%);box-shadow:0 18px 40px -16px rgba(79,70,229,.55);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.28),transparent 70%);pointer-events:none}
+h1{color:rgba(255,255,255,.85)}
+.bal{color:#fff}.bal small{color:rgba(255,255,255,.75)}
+.chip{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.chip span{color:rgba(255,255,255,.82)}
+.chip b,.chip.i b,.chip.e b{color:#fff}
+.card{border-radius:22px;box-shadow:0 12px 28px -16px rgba(76,29,149,.35)}
+.seg button[data-t="inc"][aria-pressed="true"]{background:linear-gradient(135deg,#10b981,#14b8a6);color:#fff}
+.seg button[data-t="exp"][aria-pressed="true"]{background:linear-gradient(135deg,#f97316,#ef4444);color:#fff}
+.seg button[data-t="sav"][aria-pressed="true"]{background:linear-gradient(135deg,#f59e0b,#ec4899);color:#fff}
+.btn{background:linear-gradient(135deg,#7c3aed,#0ea5e9);color:#fff;box-shadow:0 8px 18px -8px rgba(99,102,241,.7);transition:transform .15s}
+.btn:active{transform:scale(.98)}
+.card:has(.ring){background:linear-gradient(160deg,rgba(251,191,36,.20),rgba(244,114,182,.16) 55%,rgba(139,92,246,.14)),var(--card)}
+.ring .fg{stroke:url(#gg)}
+.pct{font-size:2.3rem;background:linear-gradient(90deg,#f59e0b,#ec4899,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dot{width:14px;height:14px;box-shadow:0 0 0 5px rgba(128,128,128,.14)}
+li{padding:12px 0}
+input:focus,select:focus{border-color:#7c3aed}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <h1>Aqilli hamyon · Umumiy balans</h1>
+    <p class="bal" id="bal">0<small>soʻm</small></p>
+    <div class="pair">
+      <div class="chip i"><span>⬇️ Kirim</span><b id="inc">0</b></div>
+      <div class="chip e"><span>⬆️ Chiqim</span><b id="exp">0</b></div>
+      <div class="chip"><span>🐷 Jamgʻarilgan</span><b id="sav">0</b></div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <div>
+      <section class="card">
+        <h2>✨ Yangi yozuv</h2>
+        <div class="seg" id="seg" role="group" aria-label="Yozuv turi">
+          <button type="button" data-t="inc" aria-pressed="true">Kirim</button>
+          <button type="button" data-t="exp" aria-pressed="false">Chiqim</button>
+          <button type="button" data-t="sav" aria-pressed="false">Jamgʻarma</button>
+        </div>
+        <div class="row">
+          <div><label for="amount">Summa (soʻm)</label><input id="amount" type="number" min="1" inputmode="numeric" placeholder="100000"></div>
+          <div><label for="cat">Turkum</label><select id="cat"></select></div>
+        </div>
+        <label for="note">Izoh (ixtiyoriy)</label>
+        <input id="note" type="text" maxlength="60" placeholder="Masalan, oylik maosh">
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn" id="add" type="button">Yozuvni saqlash</button>
+      </section>
+
+      <section class="card list">
+        <h2>Oxirgi yozuvlar</h2>
+        <ul id="list"></ul>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>🎯 Pul yigʻish maqsadi</h2>
+      <div class="ring">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset=".55" stop-color="#ec4899"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+          <circle class="bg" cx="60" cy="60" r="52"/>
+          <circle class="fg" id="fg" cx="60" cy="60" r="52" stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
+        </svg>
+        <div>
+          <div class="pct" id="pct">0%</div>
+          <div id="gname" style="font-weight:600"></div>
+          <div class="mute" id="gleft"></div>
+        </div>
+      </div>
+      <p class="mute" style="margin-top:14px">Maqsadga pul qoʻshish uchun chap tomondan “Jamgʻarma” turini tanlang.</p>
+      <details>
+        <summary>Maqsadni oʻzgartirish</summary>
+        <label for="gn">Maqsad nomi</label>
+        <input id="gn" type="text" maxlength="40">
+        <label for="gt">Kerakli summa (soʻm)</label>
+        <input id="gt" type="number" min="1" inputmode="numeric">
+        <button class="btn" id="gs" type="button">Maqsadni saqlash</button>
+      </details>
+    </section>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY="aqilli-hamyon-v1";
+  var CATS={inc:["Maosh","Qoʻshimcha daromad","Sovgʻa","Boshqa"],exp:["Oziq-ovqat","Transport","Kommunal","Oʻyin-kulgi","Kiyim","Boshqa"],sav:["Maqsad uchun"]};
+  var COL={inc:"var(--inc)",exp:"var(--exp)",sav:"var(--sav)"};
+  var st={tx:[],goal:{name:"Yangi noutbuk",target:5000000}},type="inc";
+  try{var raw=localStorage.getItem(KEY);if(raw){var p=JSON.parse(raw);if(p&&p.tx&&p.goal)st=p}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+  function $(id){return document.getElementById(id)}
+  function fmt(n){return Math.round(n).toLocaleString("ru-RU")}
+  function sum(t){return st.tx.filter(function(x){return x.t===t}).reduce(function(a,x){return a+x.a},0)}
+  function balance(){return sum("inc")-sum("exp")-sum("sav")}
+
+  function fillCats(){
+    var s=$("cat");s.innerHTML="";
+    CATS[type].forEach(function(c){var o=document.createElement("option");o.textContent=c;s.appendChild(o)});
+  }
+  function render(){
+    var b=balance(),i=sum("inc"),e=sum("exp"),v=sum("sav");
+    $("bal").innerHTML=fmt(b)+"<small>soʻm</small>";
+    $("inc").textContent=fmt(i);$("exp").textContent=fmt(e);$("sav").textContent=fmt(v);
+    var g=st.goal,p=Math.min(1,v/g.target);
+    $("pct").textContent=Math.floor(p*100)+"%";
+    $("fg").style.strokeDashoffset=326.7*(1-p);
+    $("gname").textContent=g.name;
+    $("gleft").textContent=v>=g.target?"Maqsadga erishildi! 🎉":"Yana "+fmt(g.target-v)+" soʻm kerak (jami "+fmt(g.target)+")";
+    $("gn").value=g.name;$("gt").value=g.target;
+    var ul=$("list");ul.innerHTML="";
+    if(!st.tx.length){var li=document.createElement("li");var m=document.createElement("p");m.className="empty";m.textContent="Hali yozuv yoʻq. Birinchi kirim yoki chiqimni qoʻshing.";li.appendChild(m);ul.appendChild(li);return}
+    st.tx.slice().sort(function(a,b){return b.id-a.id}).slice(0,30).forEach(function(x){
+      var li=document.createElement("li");
+      var d=document.createElement("span");d.className="dot";d.style.background=COL[x.t];
+      var t=document.createElement("div");t.className="t";
+      var b1=document.createElement("b");b1.textContent=x.n||x.c;
+      var s=document.createElement("span");s.className="mute";
+      var dt=new Date(x.id);s.textContent=x.c+" · "+("0"+dt.getDate()).slice(-2)+"."+("0"+(dt.getMonth()+1)).slice(-2);
+      t.appendChild(b1);t.appendChild(s);
+      var a=document.createElement("span");a.className="amt";a.style.color=COL[x.t];
+      a.textContent=(x.t==="inc"?"+":"−")+fmt(x.a);
+      var r=document.createElement("button");r.className="x";r.type="button";r.textContent="×";r.setAttribute("aria-label","Oʻchirish");
+      r.onclick=function(){st.tx=st.tx.filter(function(y){return y.id!==x.id});save();render()};
+      li.appendChild(d);li.appendChild(t);li.appendChild(a);li.appendChild(r);ul.appendChild(li);
+    });
+  }
+  $("seg").addEventListener("click",function(ev){
+    var bt=ev.target.closest("button");if(!bt)return;
+    type=bt.dataset.t;
+    [].forEach.call($("seg").children,function(c){c.setAttribute("aria-pressed",c===bt)});
+    fillCats();$("err").textContent="";
+  });
+  $("add").onclick=function(){
+    var a=parseFloat($("amount").value);
+    if(!(a>0)){$("err").textContent="Summani kiriting (0 dan katta boʻlsin).";return}
+    if(type!=="inc"&&a>balance()){$("err").textContent="Balans yetarli emas: mavjud "+fmt(balance())+" soʻm.";return}
+    st.tx.push({id:Date.now(),t:type,a:a,c:$("cat").value,n:$("note").value.trim()});
+    $("amount").value="";$("note").value="";$("err").textContent="";save();render();
+  };
+  $("gs").onclick=function(){
+    var t=parseFloat($("gt").value),n=$("gn").value.trim();
+    if(!(t>0)||!n)return;
+    st.goal={name:n,target:t};save();render();
+  };
+  fillCats();render();
+})();
+</script>
+</body>
+</html>
